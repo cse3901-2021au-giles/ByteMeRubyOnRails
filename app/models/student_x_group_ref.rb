@@ -1,0 +1,2 @@
+class StudentXGroupRef < ApplicationRecord
+end
