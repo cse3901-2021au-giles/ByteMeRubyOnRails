@@ -1,0 +1,2 @@
+class UserGroupXRef < ApplicationRecord
+end

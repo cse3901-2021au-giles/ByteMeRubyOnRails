@@ -1,6 +1,6 @@
 require "test_helper"
 
-class StudentXClassRefTest < ActiveSupport::TestCase
+class UserGroupXRefTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
