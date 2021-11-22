@@ -1,2 +1,0 @@
-class StudentXClassRef < ApplicationRecord
-end
