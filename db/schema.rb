@@ -20,16 +20,16 @@ ActiveRecord::Schema.define(version: 2021_11_21_233855) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "student_x_group_refs", force: :cascade do |t|
-    t.integer "student_id"
-    t.integer "group_id"
+  create_table "user_class_x_refs", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "class_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "user_class_x_refs", force: :cascade do |t|
+  create_table "user_group_x_refs", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "class_id"
+    t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
