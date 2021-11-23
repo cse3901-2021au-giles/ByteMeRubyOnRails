@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_21_233855) do
+ActiveRecord::Schema.define(version: 2021_11_23_043917) do
+
+  create_table "class_sessions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "evaluations", force: :cascade do |t|
+    t.integer "evaluator_id"
+    t.integer "evaluatee_id"
+    t.integer "score"
+    t.text "assessment"
+    t.integer "project_id"
+    t.integer "group_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
@@ -20,15 +37,15 @@ ActiveRecord::Schema.define(version: 2021_11_21_233855) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "student_x_class_refs", force: :cascade do |t|
-    t.integer "student_id"
+  create_table "user_class_x_refs", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "class_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "student_x_group_refs", force: :cascade do |t|
-    t.integer "student_id"
+  create_table "user_group_x_refs", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

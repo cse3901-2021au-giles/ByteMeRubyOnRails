@@ -1,0 +1,2 @@
+class UserClassXRef < ApplicationRecord
+end
