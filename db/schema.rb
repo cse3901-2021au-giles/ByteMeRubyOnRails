@@ -62,4 +62,11 @@ ActiveRecord::Schema.define(version: 2021_11_23_191227) do
     t.string "remember_digest"
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.integer "class_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
 end
