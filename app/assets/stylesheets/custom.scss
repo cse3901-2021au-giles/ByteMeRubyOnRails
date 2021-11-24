@@ -141,3 +141,23 @@ input, textarea, select, .uneditable-input {
   .split_inline{
       width:50%;
   }
+  /* user profile pictures */
+  .user-pfp-border-background{
+    overflow: hidden;
+    position: relative;
+    
+  }
+
+  .user-pfp-border-foreground{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #f7dfdc;
+    //color: white;
+    padding: 1rem;
+    font-size:x-large;
+  }
+  .user_info{
+    display:inline;
+  }
