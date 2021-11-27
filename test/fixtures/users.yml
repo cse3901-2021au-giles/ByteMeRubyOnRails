@@ -5,10 +5,18 @@ michael:
   last_name: Example
   email: michael@example.com
   password_digest: <%= User.digest('password') %>
-  type:
+  user_type: professor
 
 archer:
   first_name: Sterling
   last_name: Archer
   email: duchess@example.gov
   password_digest: <%= User.digest('password') %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  first_name: <%= "User"%>
+  last_name: <%= "#{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+<% end %>

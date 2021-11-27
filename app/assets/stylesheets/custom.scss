@@ -162,4 +162,25 @@ input, textarea, select, .uneditable-input {
   }
   .user_info{
     display:inline;
+    vertical-align:middle;
+    float:left;
+  }
+
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+.shrinkInHalf{
+  -webkit-transform:scale(0.5);
+  -moz-transform:scale(0.5);
+  -ms-transform:scale(0.5);
+  transform:scale(0.5);
   }
