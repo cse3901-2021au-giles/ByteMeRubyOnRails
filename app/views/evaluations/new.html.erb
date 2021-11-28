@@ -1,0 +1,57 @@
+<h1> New Evaluation </h1>
+<hr/>
+
+<h2>Instructions</h2>
+  <ol>
+    <li>Complete the form, rating each person in your group on a scale of 0 to 10.</li>
+    <li>Add comments to clarify/justify your evaluation.</li>
+  </ol>
+  
+<br/>
+  
+<h2>Grading Scale</h2>
+  <ul>
+    <li> 9-10 -- Amazing team-mate </li>
+    <p>You will be in contact with them for years
+    <br/>One of the **best** team-mates you have ever had for any project</p>
+    <br/>
+    <li> 7-8 -- Very good team-mate </li>
+    <p>Contributed significantly
+    <br/>Communicated effectively
+    <br/>Took initiative in the design and implementation
+    <br/>You would **seek out** this person to be a team-mate in a future course</p>
+    <br/>
+    <li> 5-6 -- Good team-mate </li>
+    <p>Carried out their assigned responsibilities
+    <br/>Contributed to the final product
+    <br/>Room for improvement in communication, initiative, effort, or skills
+    <br/>You would be **willing to partner** with them in a future course, though you wouldn't seek them out </p>
+    <br/>
+    <li> 3-4 -- Fair team-mate </li>
+    <p>Worked hard at contributing to the project
+    <br/>Struggled to carry out assigned responsibilities
+    <br/>Made minor contributions to the final product
+    <br/>You would **prefer not to partner** with this person in a future course</p>
+    <li> 0-3 -- Poor team-mate </li>
+    <p>Did not contribute to the final product
+    <br/>Put forth little or insufficient effort
+    <br/>Was rarely present at team meetings and was difficult to get a hold of
+    <br/>You would **avoid partnering** with this person in a future course</p>
+  </ul>
+  
+<br/>
+  
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_with(model: @evaluation, local: true) do |f| %>
+        
+        <%= f.label :score %>
+        <%= f.text_field :score %>
+    
+        <%= f.label :assessment %>
+        <%= f.text_field :assessment %>
+    
+        <%= f.submit "Submit" %>
+      <% end %>
+    </div>
+  </div>

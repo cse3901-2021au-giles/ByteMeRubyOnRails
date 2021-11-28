@@ -1,0 +1,29 @@
+<h1>Evaluations</h1>
+
+<table class="table">
+  <tr>
+    <th>Evaluator</th>
+    <th>Evaluatee</th>
+    <th>Project</th>
+    <th>Group</th>
+    <th>Evaluation</th>
+  </tr>
+  
+  <% @evaluations.each do |evaluation| %>
+    <tr>
+      <% evaluator = User.find evaluation.evaluator_id %>
+      <td><%= evaluator.firstName %> <%= evaluator.lastName %></td>
+      
+      <% evaluatee = User.find evaluation.evaluatee_id %>
+      <td><%= evaluatee.firstName %> <%= evaluatee.lastName %></td>
+      
+      <% project = Project.find evaluation.project_id %>
+      <td><%= project.name %></td>
+      
+      <% group = Group.find evaluation.group_id %>
+      <td><%= group.name %></td>
+      
+      <td><%= link_to 'Show', '#' %></td>
+    </tr>
+  <% end %>
+</table>

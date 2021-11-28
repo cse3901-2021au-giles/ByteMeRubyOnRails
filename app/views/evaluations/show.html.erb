@@ -1,0 +1,15 @@
+<h1> Peer Evaluation </h1>
+
+<h2> Evaluator: </h2>
+<% evaluator = User.find_by id: @evaluation.evaluator_id %>
+<p><%= evaluator.firstName %> <%= evaluator.LastName %></p>
+
+<h2> Evaluatee: </h2>
+<% evaluatee = User.find_by id: @evaluation.evaluatee_id %>
+<p><%= evaluatee.firstName %> <%= evaluatee.LastName %></p>
+
+<h2> Score: </h2>
+<p><%= @evaluation.score %></p>
+
+<h2> Assessment: </h2>
+<p><%= @evaluation.assessment %></p>
