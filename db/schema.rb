@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2021_11_27_225037) do
->>>>>>> refs/remotes/origin/dev
+ActiveRecord::Schema.define(version: 2021_11_28_045324) do
 
   create_table "class_sessions", force: :cascade do |t|
     t.string "name"

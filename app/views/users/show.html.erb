@@ -9,3 +9,12 @@
   </aside>
 </div>
 
+<% user_class_x_refs = UserClassXRef.all %>
+<ol>
+<% user_class_x_refs.each do |ref| %>
+  <% if ref.user_id == @user.id %>
+    <% class = ClassSession.find(ref.class_id) %>
+    <li><%= link_to class.name, '/class' %></li>
+  <% end %>
+<% end %>
+</ol>

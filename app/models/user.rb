@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+    has_many :user_class_x_refs
+    has_many :class_sessions, through: :user_class_x_refs
+    has_many :user_group_x_refs
+    has_many :groups, through: :user_group_x_refs
+    has_one :evaluation
     before_create :setColors
     attr_accessor :remember_token
     before_save { self.email = email.downcase }
