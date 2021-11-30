@@ -13,7 +13,7 @@
   <div class="content">
     <% user_class_x_refs = UserClassXRef.where(user_id: @user.id) %>
     <% user_class_x_refs.each do |ref| %>
-      <% user_class = ClassSession.find(ref.class_id) %>
+      <% user_class = ClassSession.find(ref.class_session_id) %>
       <button type="button" class="collapsible"><%= user_class.name =%></button>
       <div class="content">
         <% groups = Group.where(class_id: user_class.id) %>
