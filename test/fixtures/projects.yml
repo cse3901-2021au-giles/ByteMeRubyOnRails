@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  class_id: 1
+  class_session_id: 1
 
 two:
   name: MyString
-  class_id: 1
+  class_session_id: 1
