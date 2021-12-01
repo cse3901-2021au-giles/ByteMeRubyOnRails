@@ -17,3 +17,11 @@ User.create!(first_name: "Example",
                password:              password,
                password_confirmation: password)
 end
+# Create a main sample class session.
+ClassSession.create!(name: "Example Class")
+# Create a main sample group.
+Group.create!(name: "Example Group",
+              class_session_id: 1)
+# Create a main sample project.
+Project.create!(name: "Example Project",
+              class_session_id: 1)

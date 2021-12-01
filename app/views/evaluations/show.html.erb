@@ -1,15 +1,19 @@
 <h1> Peer Evaluation </h1>
+<div class="evaluation_display">
+    <h2> Evaluator: </h2>
+    <% evaluator = User.find_by id: @evaluation.evaluator_id %>
+    <p class="displayed"><%= evaluator.first_name %> <%= evaluator.last_name %></p>
+    <br />
+    <h2> Evaluatee: </h2>
+    <% evaluatee = User.find_by id: @evaluation.evaluatee_id %>
+    <p><%= evaluatee.first_name %> <%= evaluatee.last_name %></p>
+    <br />
+    
+    <h2> Score: </h2>
+    <p><%= @evaluation.score %></p>
+    <br />
 
-<h2> Evaluator: </h2>
-<% evaluator = User.find_by id: @evaluation.evaluator_id %>
-<p><%= evaluator.firstName %> <%= evaluator.LastName %></p>
-
-<h2> Evaluatee: </h2>
-<% evaluatee = User.find_by id: @evaluation.evaluatee_id %>
-<p><%= evaluatee.firstName %> <%= evaluatee.LastName %></p>
-
-<h2> Score: </h2>
-<p><%= @evaluation.score %></p>
-
-<h2> Assessment: </h2>
-<p><%= @evaluation.assessment %></p>
+    <h2> Assessment: </h2>
+    <p><%= @evaluation.assessment %></p>
+    <br />
+</div>
