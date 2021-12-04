@@ -1,0 +1,13 @@
+<h1> Groups <h1>
+
+  <% @groups.each do |group| %>
+    <button type="button" class="collapsible"><%= group.name =%></button>
+    <div class="content">
+    <% members = UserGroupXRef.where(group_id: group.id) %>
+      <ul>
+        <% members.each do |member| %>
+          <li> <%= member.name =%> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
