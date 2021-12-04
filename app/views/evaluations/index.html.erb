@@ -11,6 +11,7 @@
   
   <% @evaluations.each do |evaluation| %>
     <tr>
+    <div class="evaluation">
       <% evaluator = User.find evaluation.evaluator_id %>
       <td><%= evaluator.first_name %> <%= evaluator.last_name %></td>
       
@@ -29,6 +30,7 @@
       <% else%>
         <%= link_to 'Complete', edit_evaluation_path(evaluation) %>
       <%end%></td>
+    </div>
     </tr>
   <% end %>
 </table>
