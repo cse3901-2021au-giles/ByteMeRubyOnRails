@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'projects/index'
-  get 'groups/index'
   root 'static_pages#home'
   get 'sessions/new'
   get '/about', to: 'static_pages#about'
@@ -13,4 +11,6 @@ Rails.application.routes.draw do
   resources :users
   resources :evaluations
   resources :class_sessions
+  resources :projects
+  resources :groups
 end
