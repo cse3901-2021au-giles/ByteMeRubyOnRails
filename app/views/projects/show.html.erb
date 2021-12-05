@@ -1,1 +1,45 @@
-<h1>Evaluation for Project</h1>
+<h1>Evaluation for Project <%= @project.name %></h1>
+<br/>
+<h2> Submitted </h2>
+<table>
+  <tr>
+    <th>Evaluator</th>
+    <th>Evaluatee</th>
+    <th>Score</th>
+    <th>Assessment</th>
+  </tr>
+  <% count = 0 %>
+  <% Evaluation.all.each do |evaluation| %>
+    <% if evaluation.project_id = @project.id %>
+      <% count = count + 1 %>
+      <tr>
+        <% evaluator = User.find_by id: evaluation.evaluator.id %>
+        <th><% evaluator.firstName %> <% evaluator.lastName %></th>
+        <% evaluatee = User.find_by id: evaluation.evaluatee.id
+        <th><% evaluatee.firstName %> <% evaluatee.lastName %></th>
+        <th><% @evaluation.score %></th>
+        <th><% @evaluation.assessment %></th>
+      </tr> 
+    <% end %>
+  <% end %>
+</table>
+<br/>
+<p>There are <%= count %> evaluations submitted.</p>
+<br/>
+<h2> Students haven't submitted </h2>
+<ul>
+<% flag = 0 %>
+<% User.all each do |user| %>
+  <% if user.type == "student" %>
+    <% Evaluation.all.each do |evaluation| %>
+      <% if user.id == evaluation.evaluator.id %>
+        <% flag = 1 %> 
+      <% end %>   
+    <% end %>
+    <% if flag == 0 %>
+      <li> <%= user.firstName %> <%= user.lastName %> </li>
+    <% end %>
+  <% end %>
+<% end %>
+</ul>
+
