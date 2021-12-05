@@ -1,0 +1,12 @@
+<button type="button" class="collapsible">
+<%completeStyle = "incomplete"%>
+	<% if class_session.groups_complete? then completeStyle = "complete" end%>
+	<%= class_session.name + "\t"=%>  <%if class_session.has_evaluations? %><span class="<%=completeStyle=%>"><%=class_session.number_complete_groups.to_s =%></span><%= "/" + class_session.number_groups.to_s =%><% end %>
+</button>
+	<div class="content">
+	  	<ul class="groupProjects">
+			<% class_session.get_groups().each do |group| %> 
+				<%= render "evaluations/group-projects-collapsible", :group => group =%>
+			<% end %>
+		</ul>
+	</div>

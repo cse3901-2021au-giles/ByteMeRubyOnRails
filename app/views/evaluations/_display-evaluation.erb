@@ -1,0 +1,27 @@
+
+
+<% evaluator = User.find evaluation.evaluator_id %>
+<td><%= evaluator.first_name %> <%= evaluator.last_name %></td>
+
+<% evaluatee = User.find evaluation.evaluatee_id %>
+<td><%= evaluatee.first_name %> <%= evaluatee.last_name %></td>
+
+<% project = Project.find evaluation.project_id %>
+<td><%= project.name %></td>
+
+<% group = Group.find evaluation.group_id %>
+<td><%= group.name %></td>
+
+<td>
+
+<% if evaluation.submitted %>
+  <%= link_to 'Show', evaluation %>
+<% else%>
+  <%if @user.id == evaluation.evaluator_id%>
+     <%= link_to 'Complete', edit_evaluation_path(evaluation), :class => "incomplete" %>
+  <%else%>
+    <%= "pending..." =%>
+  <%end%>
+<%end%>
+
+</td>

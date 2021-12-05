@@ -4,7 +4,8 @@ class EvaluationsController < ApplicationController
   # 
   #
   def index   
-    @evaluations = Evaluation.where(evaluator_id: current_user.id)
+    @evaluations = Evaluation.all
+    @user = User.find(current_user.id)
   end
 
   # Shows one evaluation for a student

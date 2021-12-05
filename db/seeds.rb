@@ -2,6 +2,7 @@
 User.create!(first_name: "Example",
              last_name: "User",
              email: "example@railstutorial.org",
+             user_type: "professor",
              password:              "password",
              password_confirmation: "password")
 
@@ -18,10 +19,17 @@ User.create!(first_name: "Example",
                password_confirmation: password)
 end
 # Create a main sample class session.
-ClassSession.create!(name: "Example Class")
+ClassSession.create!(name: "Example Class 1")
+UserClassXRef.create(user_id: 1, class_session_id: 1)
+ClassSession.create!(name: "Example Class 2")
+UserClassXRef.create(user_id: 1, class_session_id: 2)
 # Create a main sample group.
-Group.create!(name: "Example Group",
+Group.create!(name: "Example Group 1",
               class_session_id: 1)
+Group.create!(name: "Example Group 2",
+                            class_session_id: 2)
 # Create a main sample project.
-Project.create!(name: "Example Project",
+Project.create!(name: "Example Project 1",
               class_session_id: 1)
+Project.create!(name: "Example Project 2",
+              class_session_id: 2)

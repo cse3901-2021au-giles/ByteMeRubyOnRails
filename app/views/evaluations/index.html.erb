@@ -1,36 +1,11 @@
 <h1>Evaluations</h1>
 
-<table class="table">
-  <tr>
-    <th>Evaluator</th>
-    <th>Evaluatee</th>
-    <th>Project</th>
-    <th>Group</th>
-    <th>Evaluation</th>
-  </tr>
   
-  <% @evaluations.each do |evaluation| %>
-    <tr>
-    <div class="evaluation">
-      <% evaluator = User.find evaluation.evaluator_id %>
-      <td><%= evaluator.first_name %> <%= evaluator.last_name %></td>
-      
-      <% evaluatee = User.find evaluation.evaluatee_id %>
-      <td><%= evaluatee.first_name %> <%= evaluatee.last_name %></td>
-      
-      <% project = Project.find evaluation.project_id %>
-      <td><%= project.name %></td>
-      
-      <% group = Group.find evaluation.group_id %>
-      <td><%= group.name %></td>
-      
-      <td>
-      <% if evaluation.submitted %>
-        <%= link_to 'Show', evaluation %>
-      <% else%>
-        <%= link_to 'Complete', edit_evaluation_path(evaluation) %>
-      <%end%></td>
-    </div>
-    </tr>
+  <%if @user.student? %>
+    <%= render 'student-evaluations' %>
+  <%elsif @user.admin? %>
+    <%= render 'professor-evaluations' =%>
   <% end %>
-</table>
+
+<%= render 'shared/collapsible_script' =%>
+

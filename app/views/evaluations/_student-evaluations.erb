@@ -1,0 +1,19 @@
+
+  
+<%studentEvaluations = @evaluations.where(evaluator_id: current_user.id)%>
+<table class="table">
+  <tr>
+    <th>Evaluator</th>
+    <th>Evaluatee</th>
+    <th>Project</th>
+    <th>Group</th>
+    <th>Evaluation</th>
+  </tr>
+<% studentEvaluations.each do |evaluation| %>
+    <tr>
+    <div class="evaluation">
+      <%= render "evaluations/display-evaluation", :evaluation => evaluation =%>
+    </div>
+    </tr>
+  <% end %>
+</table>
