@@ -27,5 +27,7 @@ class Project < ApplicationRecord
 
 
 
+  
+  validates :name, presence: {message: 'Name needed'}
 end
 

@@ -28,7 +28,6 @@ class ClassSession < ApplicationRecord
   end
 
   def has_evaluations?
-    byebug
     return get_groups.any? {|group| group.has_evaluations?}
   end
 end

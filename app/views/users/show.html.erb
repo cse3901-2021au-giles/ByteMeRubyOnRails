@@ -14,6 +14,32 @@
     <%= render 'evaluations/professor-evaluations' =%>
   <% end %>
 
+<button type="button" class="collapsible">Your Classes</button>
+  <div class="content">
+    <% user_class_x_refs = UserClassXRef.where(user_id: @user.id) %>
+    <% user_class_x_refs.each do |ref| %>
+      <% user_class = ClassSession.find(ref.class_session_id) %>
+      <button type="button" class="collapsible"><%= user_class.name =%></button>
+      <div class="content">
+        <% groups = Group.where(class_session_id: user_class.id) %>
+        <% groups.each do |group| %>
+          <button type="button" class="collapsible"><%= group.name =%></button>
+          <div class="content">
+            <% members = UserGroupXRef.where(group_id: group.id) %>
+            <ul>
+              <% members.each do |member| %>
+                <li> <%= member.name =%> </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<br>
+  <% if current_user.admin? %>
+    <br><%= link_to "Add Class", "/class_sessions/new", class: "btn btn-lg btn-primary" %>
+  <% end%>
   
  <script>
 	var coll = document.getElementsByClassName("collapsible");

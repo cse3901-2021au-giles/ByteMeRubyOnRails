@@ -16,5 +16,8 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+  <%= f.label "I am a..." %>
+  <%= f.select "user_type", options_for_select([ "Student", "Professor" ], f.object.user_type)%>
+
   <%= f.submit button_text, class: "btn btn-primary" %>
 <% end %>
