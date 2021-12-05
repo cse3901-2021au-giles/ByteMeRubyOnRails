@@ -9,7 +9,7 @@
   </aside>
 </div>
 
-<button type="button" class="collapsible">Your Class</button>
+<button type="button" class="collapsible">Your Classes</button>
   <div class="content">
     <% user_class_x_refs = UserClassXRef.where(user_id: @user.id) %>
     <% user_class_x_refs.each do |ref| %>
@@ -31,6 +31,10 @@
       </div>
     <% end %>
   </div>
+<br>
+  <% if current_user.admin? %>
+    <br><%= link_to "Add Class", "/class_sessions/new", class: "btn btn-lg btn-primary" %>
+  <% end%>
   
  <script>
 	var coll = document.getElementsByClassName("collapsible");
