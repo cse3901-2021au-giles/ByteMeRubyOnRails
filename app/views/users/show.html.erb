@@ -31,6 +31,10 @@
       </div>
     <% end %>
   </div>
+
+  <% if current_user.admin? %>
+    <br><%= link_to "Add Class", "/class_sessions/new", class: "btn btn-lg btn-primary" %>
+  <% end%>
   
  <script>
 	var coll = document.getElementsByClassName("collapsible");
