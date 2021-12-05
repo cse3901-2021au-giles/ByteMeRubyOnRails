@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_28_045324) do
+ActiveRecord::Schema.define(version: 2021_11_30_200428) do
 
   create_table "class_sessions", force: :cascade do |t|
     t.string "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_11_28_045324) do
     t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "submitted"
   end
 
   create_table "groups", force: :cascade do |t|

@@ -1,0 +1,8 @@
+<h1>Projects</h1>
+
+<% @projects.each do |project| %>
+  <button type="button" class="collapsible"><%= project.name =%></button>
+  <div class="content">
+    <%= link_to project.name, /projects/project.id %>
+  </div>
+<% end %>

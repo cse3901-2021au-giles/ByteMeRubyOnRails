@@ -11,11 +11,12 @@
   
   <% @evaluations.each do |evaluation| %>
     <tr>
+    <div class="evaluation">
       <% evaluator = User.find evaluation.evaluator_id %>
-      <td><%= evaluator.firstName %> <%= evaluator.lastName %></td>
+      <td><%= evaluator.first_name %> <%= evaluator.last_name %></td>
       
       <% evaluatee = User.find evaluation.evaluatee_id %>
-      <td><%= evaluatee.firstName %> <%= evaluatee.lastName %></td>
+      <td><%= evaluatee.first_name %> <%= evaluatee.last_name %></td>
       
       <% project = Project.find evaluation.project_id %>
       <td><%= project.name %></td>
@@ -23,7 +24,13 @@
       <% group = Group.find evaluation.group_id %>
       <td><%= group.name %></td>
       
-      <td><%= link_to 'Show', '#' %></td>
+      <td>
+      <% if evaluation.submitted %>
+        <%= link_to 'Show', evaluation %>
+      <% else%>
+        <%= link_to 'Complete', edit_evaluation_path(evaluation) %>
+      <%end%></td>
+    </div>
     </tr>
   <% end %>
 </table>

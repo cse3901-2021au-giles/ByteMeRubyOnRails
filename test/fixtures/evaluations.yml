@@ -1,17 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  evaluator_id: 1
-  evaluatee_id: 1
+  evaluator_id: 762146111 #id of Michael Example, long may he prosper
+  evaluatee_id: 762146111 #check ids of fixtures by adding 'byebug' to a test and then typing [ModelName].all in debug
   score: 1
   assessment: MyText
-  project_id: 1
-  group_id: 1
+  project_id: 298486374,
+  group_id: 298486374,
 
 two:
-  evaluator_id: 1
-  evaluatee_id: 1
+  evaluator_id: 1 
+  evaluatee_id: 1 
   score: 1
   assessment: MyText
-  project_id: 1
-  group_id: 1
+  project_id: 298486374,
+  group_id: 298486374,
+
+

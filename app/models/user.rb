@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_many :user_class_x_refs, :inverse_of => :user
     has_many :class_sessions, :through => :user_class_x_refs
-    has_one :evaluation
+    has_many :evaluation
     before_create :setColors
     attr_accessor :remember_token
     before_save { self.email = email.downcase }
