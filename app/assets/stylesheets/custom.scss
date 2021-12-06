@@ -110,22 +110,29 @@ footer {
 
 /* buttons */
 .btn-primary {
-  background-color: grey !important;
+  background-color: #656565 !important;
+  outline-color: #656565 !important;
   font-family: 'Open Sans', sans-serif;
-  font-weight: bold !important;
-  &:hover, &:active, &:visited {
-    background-color: darkgray !important;
-  }
 }
 
 .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-  background-color: darkgray !important;
+  background-color: #555555 !important;
+  outline-color: #555555 !important;
 }
+
 
 /* forms */
   .form {
     font-family: 'Open Sans', sans-serif;
     font-weight: bold !important;
+    font-size: 1.1em;
+    .btn-primary {
+      font-weight: bold !important;
+    }
+    p{
+      font-weight: normal;
+      font-size: 1em;
+    }
   }
 
   input, textarea, select, .uneditable-input {

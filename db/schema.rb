@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_11_30_200428) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
-    t.integer "class_id"
+    t.integer "class_session_id"
     t.integer "group_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -40,14 +40,14 @@ ActiveRecord::Schema.define(version: 2021_11_30_200428) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.integer "class_id"
+    t.integer "class_session_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_class_x_refs", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "class_id"
+    t.integer "class_session_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
