@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   resources :users
   resources :evaluations
   resource :class_sessions
-  resources :projects
-  resources :groups
+  resource :projects
+  resource :groups
 end

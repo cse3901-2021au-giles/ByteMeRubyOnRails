@@ -1,4 +1,4 @@
-<%# <h1><%= @class_session.name %></h1> %>
+<h1><%= @class_session.name %></h1> %>
 
 <div class="class display">
   <h2>Professor</h2>
@@ -12,7 +12,7 @@
   <%# Struggling to get the professor name here %>
 
   <h2>Groups</h2>
-  <% groups = Group.where(class_session_id: @class_session.id) %>
+  <% groups = Group.where(class_session_id: @claSss_session.id) %>
   <% groups.each do |group| %>
     <button type="button" class="collapsible"><%= group.name =%></button>
     <div class="content">
@@ -35,5 +35,11 @@
         <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
     <% end %>
   <% end %>
+
+  <% if current_user.admin? %>
+    <%= link_to "Add Student", "/class_sessions/new", class: "btn btn-lg btn-primary" %> <%# make this page%>
+    <%= link_to "Add Group", "/groups/new", class: "btn btn-lg btn-primary" %>
+    <%= link_to "Add Project", "/projects/new", class: "btn btn-lg btn-primary" %>
+  <% end%>
   
 </div>

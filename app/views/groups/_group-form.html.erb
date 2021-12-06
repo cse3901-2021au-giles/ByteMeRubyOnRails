@@ -1,0 +1,31 @@
+<div class="form">
+<%= form_with(model: @group, local: true) do |f| %>
+  <%# <%= render 'error_messages', object: @class_session %> 
+  <%# need error handling%>
+
+  <%= f.label :name %>
+    <p>Remember: this name should be unique to this group</p>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :group_type %>
+  <% if Group.all.size > 0%>
+    <p>Your existing group types are: </p>
+  <% end%>
+  
+
+  <ul>
+
+  <% for i in Group.distinct.pluck(:group_type) do%>
+    <li>
+      <%= @groups[i].group_type %>
+    </li>
+  <% end%>
+  </ul>
+
+  <%= f.text_field :group_type, class: 'form-control' %>
+
+
+
+  <%= f.submit button_text, class: "btn btn-primary" %>
+<% end %>
+</div>
