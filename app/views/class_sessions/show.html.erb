@@ -1,15 +1,19 @@
-<h1><%= @class_session.name %></h1>
+<%# <h1><%= @class_session.name %></h1> %>
 
 <div class="class display">
   <h2>Professor</h2>
-  <% user_class_x_refs = UserClassXRef.where(class_id: @class_session.id) %>
-  <% user_class_x_refs.each do |ref| %>
-    <% prof = user_class_x_refs.find(ref.user_type) %>
-    <% if prof == "professor" %>
-      <p><%= prof.first_name + " " + prof.last_name %></p>
+  <% user_class_x_refs = UserClassXRef.where(class_session_id: @class_session.id) %>
+    <% user_class_x_refs.each do |user| %>
+    <% if user_class_x_refs.admin? %>\
+      <h3>
+      <%= user.first_name + " " + user.last_name %>
+      </h3>
+    <% end %>
+  <% end %>
+  <%# Struggling to get the professor name here %>
 
   <h2>Groups</h2>
-  <% groups = Group.where(class_id: @class_session.id) %>
+  <% groups = Group.where(class_session_id: @class_session.id) %>
   <% groups.each do |group| %>
     <button type="button" class="collapsible"><%= group.name =%></button>
     <div class="content">
@@ -23,7 +27,7 @@
   <% end %>
 
   <h2>Students</h2>
-  <% users = UserClassXRef.where(class_id: @class_session.id) %>
+  <% users = UserClassXRef.where(class_session_id: @class_session.id) %>
   <% users.each do |user| %>
     <% if user.student? %>
       <%= link_to user.first_name + " " + user.last_name, user %>

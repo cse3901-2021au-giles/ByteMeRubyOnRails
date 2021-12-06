@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+* Images
+ The image in the jumbotron background (on the home page) was found at https://global-uploads.webflow.com/5d64efaf6ed3eef3fca10861/5dbfe26c5102da1b585c3461_annie-spratt-QckxruozjRg-unsplash.jpg
