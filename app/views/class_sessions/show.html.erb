@@ -18,4 +18,16 @@
       </ul>
     </div>
   <% end %>
+
+  <h2>Students</h2>
+  <% users = UserClassXRef.where(class_id: @class_session.id) %>
+  <% users.each do |user| %>
+    <% if user.student? %>
+      <%= link_to user.first_name + " " + user.last_name, user %>
+    <% end %>
+    <% if current_user.admin? && !current_user?(user) %>
+        <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+    <% end %>
+  <% end %>
+  
 </div>
