@@ -1,7 +1,15 @@
 <h1>Classes</h1>
 
-<ol>
-  <% @classes.each do |class| %>
-    <li><%= class.name %></li>
-  <% end %>
-</ol>
+<%= will_paginate %>
+
+<ul class="classes">
+  <%= render @classes %>
+</ul>
+
+<%= will_paginate %>
+
+<%# <ol> %>
+  <%# <% @classes.each do |class| %>
+    <%# <li><%= class.name %><%# </li> %>
+  <%# <% end %>
+<%# </ol> %>
