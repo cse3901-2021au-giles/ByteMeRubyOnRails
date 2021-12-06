@@ -7,6 +7,7 @@
     <% if user_class_x_refs.admin? %>\
       <h3>
       <%= user.first_name + " " + user.last_name %>
+      </h3>
     <% end %>
   <% end %>
   <%# Struggling to get the professor name here %>
@@ -36,10 +37,13 @@
     <% end %>
   <% end %>
 
+<<<<<<< HEAD
   <% if current_user.admin? %>
     <%= link_to "Add Student", "/class_sessions/new", class: "btn btn-lg btn-primary" %> <%# make this page%>
     <%= link_to "Add Group", "/groups/new", class: "btn btn-lg btn-primary" %>
     <%= link_to "Add Project", "/projects/new", class: "btn btn-lg btn-primary" %>
   <% end%>
   
+=======
+>>>>>>> 01d6d3bf692b5dd541a995a1fd5564ec62becafe
 </div>
