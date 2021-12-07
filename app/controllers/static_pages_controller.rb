@@ -1,6 +1,5 @@
 class StaticPagesController < ApplicationController
-  def home
-    
+  def home 
     if logged_in?
       redirect_to user_path(current_user)
     end
@@ -11,4 +10,8 @@ class StaticPagesController < ApplicationController
   
   def contact
   end
+  
+  def instruction
+  end
+  
 end
