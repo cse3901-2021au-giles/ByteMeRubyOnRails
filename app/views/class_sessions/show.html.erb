@@ -25,7 +25,7 @@
       </ul>
     </div>
   <% end %>
-  <% if current_user.admin? %>
+  <% if @user.admin? %>
     <h3>Project Controls</h3>
     <div class = "center">
       <%= link_to "Add Project", "/projects/new", class: "btn btn-lg btn-primary" %> 
