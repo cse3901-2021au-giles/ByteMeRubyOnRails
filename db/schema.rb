@@ -72,9 +72,6 @@ ActiveRecord::Schema.define(version: 2021_12_07_021822) do
     t.string "remember_digest"
     t.string "color1"
     t.string "color2"
-    t.string "activation_digest"
-    t.boolean "activated", default: false
-    t.datetime "activated_at"
   end
 
 end

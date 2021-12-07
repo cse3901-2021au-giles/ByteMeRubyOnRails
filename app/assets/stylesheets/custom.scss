@@ -48,12 +48,15 @@ h1 {
 
 h2 {
 //   font-size: 1.4em;
-//   letter-spacing: -1px;
-//   margin-bottom: 30px;
+   letter-spacing: -1px;
+   margin-bottom: 30px;
    text-align: center;
    font-weight: bold;
 //   //color: $gray-light;
 }
+h3 {
+     text-align: center;
+  }
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -120,6 +123,9 @@ footer {
   background-color: #656565 !important;
   outline-color: #656565 !important;
   font-family: 'Open Sans', sans-serif;
+  center{
+    text-align: center;
+  }
 }
 
 .btn-primary:hover, .btn-primary:active{
