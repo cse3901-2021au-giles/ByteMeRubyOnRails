@@ -1,18 +1,46 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+
+<% if logged_in? %>
+  <% if current_user.student?%>
+    <header class="navbar navbar-fixed-top navbar-inverse nav-student">
+  <% end %>
+  <% if current_user.admin?%>
+    <<header class="navbar navbar-fixed-top navbar-inverse nav-admin">
+  <% end %>
+<% else %>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+<% end %>
   <div class="container">
-    <%= link_to "Evaluation Tool", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
+    <% if logged_in? %>
+      <% if current_user.student?%>
+        <%= link_to "Evaluation Tool: Student View", root_path, id: "logo" %>
+      <% end %>
+      <% if current_user.admin?%>
+        <%= link_to "Evaluation Tool: Professor View", root_path, id: "logo" %>
+      <% end %>
+    <% else %>
+      <%= link_to "Evaluation Tool", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+    <% end %>
+
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Instruction", instruction_path %></li>
+        <li><%= link_to "Instructions", instruction_path %></li>
         <% if logged_in? %>
           <li><%= link_to "Classes", class_sessions_path %></li>
           <li><%= link_to "Users", users_path %></li>
-          <li class="dropdown">
+
+            <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>
             </a>
-            <ul class="dropdown-menu" role="menu">
+            <% if current_user.student?%>
+              <ul class="dropdown-menu nav-student" role="menu">
+            <% end %>
+            <% if current_user.admin?%>
+              <ul class="dropdown-menu nav-admin" role="menu">
+            <% end %>
               <li><%= link_to "Profile", current_user %></li>
               <li><%= link_to "Settings", edit_user_path(current_user) %></li>
               <li class="divider"></li>
