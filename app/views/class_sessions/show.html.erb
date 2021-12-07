@@ -28,9 +28,9 @@
   <% if @user.admin? %>
     <h3>Project Controls</h3>
     <div class = "center">
-      <%= link_to "Add Project", {:controller => "projects", :action => "new", :class_session_id => @class_session.id }, class: "btn btn-lg btn-primary" %> 
+      <%= link_to "Add Project", {:controller => "projects", :action => "new", :class_session_id => @class_session.id }, class: "btn btn-lg btn-primary btn-admin" %> 
 
-      <%= link_to "Edit Project", "/projects/edit", class: "btn btn-lg btn-primary" %> 
+      <%= link_to "Edit Project", "/projects/edit", class: "btn btn-lg btn-primary btn-admin" %> 
     </div>
   <% end%>
 
@@ -50,8 +50,8 @@
   <% if current_user.admin? %>
     <h3>Group Controls</h3>
     <div class = "center">
-      <%= link_to "Add Group", "/groups/new", class: "btn btn-lg btn-primary" %>
-      <%= link_to "Edit Group", "/groups/edit", class: "btn btn-lg btn-primary" %>
+      <%= link_to "Add Group", "/groups/new", class: "btn btn-lg btn-primary btn-admin" %>
+      <%= link_to "Edit Group", "/groups/edit", class: "btn btn-lg btn-primary btn-admin" %>
     </div>
   <% end%>
 
@@ -69,7 +69,7 @@
   <% if current_user.admin? %>
     <h3>Student Controls</h3>
     <div class="center">
-      <%= link_to "Add Student", "/class_sessions/new", class: "btn btn-lg btn-primary" %> 
+      <%= link_to "Add Student", "/class_sessions/new", class: "btn btn-lg btn-primary btn-admin" %> 
     </div>
   <% end%>
 

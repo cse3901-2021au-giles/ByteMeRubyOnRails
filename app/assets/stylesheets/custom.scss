@@ -8,6 +8,11 @@ $hoverCollapsible: #ccc;
 $collapsibleContentBackground: #f1f1f1;
 $collapsibleBackground: #eee;
 $collapsibleColor: #444;
+$studentColor:#23395d;
+$studentHoverColor: #203354;
+$adminColor: #3e236e;
+$adminHoverColor: #341d5c;
+
 
 /* universal */
 
@@ -63,7 +68,7 @@ p {
   font-family: 'Open Sans', sans-serif;
 }
 a {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif !important;
 }
 
 
@@ -83,6 +88,34 @@ a {
     text-decoration: none;
   }
 }
+
+nav a {
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: bold !important;
+  color: white !important;
+
+}
+
+
+.nav-student{
+  background-color: $studentColor!important;
+  outline-color: $studentColor !important;
+  a:hover, a:active{
+    background-color: $studentHoverColor !important;
+    outline-color: $studentHoverColor !important;
+  }
+
+}
+
+.nav-admin{
+  background-color: $adminColor !important;
+  outline-color: $adminColor !important;
+  a:hover, a:active{
+    background-color: $adminHoverColor !important;
+    outline-color: $adminHoverColor !important;
+  }
+}
+
 
 /* footer */
 
@@ -120,18 +153,36 @@ footer {
 
 /* buttons */
 .btn-primary {
-  background-color: #656565 !important;
-  outline-color: #656565 !important;
+  background-color: #656565;
+  outline-color: #656565 ;
   font-family: 'Open Sans', sans-serif;
   center{
     text-align: center;
   }
+
+  .btn-primary:hover, .btn-primary:active{
+    background-color: #555555;
+    outline-color: #555555;
+  }
 }
 
-.btn-primary:hover, .btn-primary:active{
-  background-color: #555555 !important;
-  outline-color: #555555 !important;
+.btn-student{
+  background-color: $studentColor!important;
+  outline-color: $studentColor !important;
+  &:hover, &:active{
+    background-color: $studentHoverColor !important;
+    outline-color: $studentHoverColor !important;
+  }
 }
+.btn-admin{
+  background-color: $adminColor!important;
+  outline-color: $adminColor !important;
+  &:hover, &:active{
+    background-color: $adminHoverColor !important;
+    outline-color: $adminHoverColor !important;
+  }
+}
+
 
 
 /* forms */
