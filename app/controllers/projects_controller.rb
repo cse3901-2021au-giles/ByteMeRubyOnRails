@@ -10,4 +10,40 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
   
+
+  def create
+     @project = Project.new(group_params)
+     @project.class_session_id = @class_session.id
+     if @project.save
+       flash[:success] = "Successfully created your project!"
+       redirect_to "/"
+     else
+       render 'new'
+     end
+   end
+
+   def edit
+     @project = Project.find(params[:id])
+   end
+
+   def update
+     @project = Project.find(params[:id])
+     if @project.update(project_params)
+      flash[:success] = "Project updated"
+      redirect_to @project
+     else
+       render 'edit'
+     end
+   end
+ 
+   def destroy
+    Project.find(params[:id]).destroy
+    flash[:success] = "Project deleted"
+   end
+
+   private
+   def project_params
+     params.require(:project).permit(:name)
+   end
 end
+

@@ -1,10 +1,10 @@
 <div class="form">
-<%= form_with(model: @class_session, local: true) do |f| %>
+<%= form_with(model: @project, local: true) do |f| %>
   <%# <%= render 'error_messages', object: @class_session %> 
     <%# need error handling%>
 
-  <b>Enter a name for your class...</b><br/>
-  <p>Remember: this name should be unique to this section</p>
+  <b>Enter a name for this project...</b><br/>
+  <p>Remember: this name should be unique to this project</p>
 
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>
