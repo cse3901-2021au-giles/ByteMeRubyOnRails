@@ -13,12 +13,10 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
    
-    byebug
   end
 
   def create
      @project = Project.new(project_params)
-     byebug
      if @project.save
        flash[:success] = "Successfully created your project!"
        redirect_to "/"
