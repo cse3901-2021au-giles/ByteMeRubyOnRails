@@ -5,6 +5,7 @@ class ClassSessionsController < ApplicationController
   end
   
   def show
+    @class_session = ClassSession.new
   end
 
   def new
