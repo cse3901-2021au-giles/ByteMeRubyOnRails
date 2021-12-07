@@ -9,10 +9,13 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
   end
-  
+
+  def new
+    @project = Project.new
+  end
 
   def create
-     @project = Project.new(group_params)
+     @project = Project.new(project_params)
      @project.class_session_id = @class_session.id
      if @project.save
        flash[:success] = "Successfully created your project!"
