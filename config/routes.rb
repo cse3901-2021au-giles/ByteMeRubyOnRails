@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :class_sessions
   resource :projects
   resource :groups
+  
 end
