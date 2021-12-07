@@ -9,7 +9,8 @@
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>
 
-
+  
+  <%= f.hidden_field :class_session_id, value: params[:class_session_id] %>
   <%= f.submit button_text, class: "btn btn-primary" %>
 <% end %>
 </div>

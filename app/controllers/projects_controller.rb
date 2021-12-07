@@ -12,11 +12,13 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+   
+    byebug
   end
 
   def create
      @project = Project.new(project_params)
-     @project.class_session_id = @class_session.id
+     byebug
      if @project.save
        flash[:success] = "Successfully created your project!"
        redirect_to "/"
@@ -46,7 +48,7 @@ class ProjectsController < ApplicationController
 
    private
    def project_params
-     params.require(:project).permit(:name)
+     params.require(:project).permit(:name, :class_session_id)
    end
 end
 

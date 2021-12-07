@@ -28,7 +28,8 @@
   <% if @user.admin? %>
     <h3>Project Controls</h3>
     <div class = "center">
-      <%= link_to "Add Project", "/projects/new", class: "btn btn-lg btn-primary" %> 
+      <%= link_to "Add Project", {:controller => "projects", :action => "new", :class_session_id => @class_session.id }, class: "btn btn-lg btn-primary" %> 
+
       <%= link_to "Edit Project", "/projects/edit", class: "btn btn-lg btn-primary" %> 
     </div>
   <% end%>
