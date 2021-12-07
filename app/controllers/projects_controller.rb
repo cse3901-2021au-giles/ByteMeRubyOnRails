@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
      @project = Project.new(project_params)
      if @project.save
        flash[:success] = "Successfully created your project!"
-       redirect_to "/"
+       redirect_to "/class_sessions/" + @class_session.id
      else
        render 'new'
      end
@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
      @project = Project.find(params[:id])
      if @project.update(project_params)
       flash[:success] = "Project updated"
-      redirect_to @project
+      redirect_to "/class_sessions/" + @class_session.id
      else
        render 'edit'
      end

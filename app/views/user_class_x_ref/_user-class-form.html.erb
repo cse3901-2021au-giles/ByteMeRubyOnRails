@@ -1,0 +1,16 @@
+<div class="form">
+<%= form_with(model: @project, local: true) do |f| %>
+  <%# <%= render 'error_messages', object: @class_session %> 
+    <%# need error handling%>
+
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, class: 'form-control' %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name, class: 'form-control' %>
+
+  
+  <%= f.hidden_field :class_session_id, value: params[:class_session_id] %>
+  <%= f.submit button_text, class: "btn btn-primary btn-admin" %>
+<% end %>
+</div>

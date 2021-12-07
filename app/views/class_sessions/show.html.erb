@@ -8,9 +8,9 @@
     <%user = User.find(xref.user_id)%>
     <% if user.admin? %>
       <%= user.first_name + " " + user.last_name %>
-      </h2>
     <% end %>
   <% end %>
+  </h2>
 
   <h2>Projects</h2>
   <% groups = Group.where(class_session_id: @class_session.id) %>
@@ -50,6 +50,8 @@
   <% if current_user.admin? %>
     <h3>Group Controls</h3>
     <div class = "center">
+      <%# <%= button_to "Randomize Group Members", randomize_groups, class:"btn btn-lg btn-primary btn-admin" %> 
+      <%# <button id="randomize_groups" class="btn btn-lg btn-primary btn-admin" >Randomize Group Members</button> %>
       <%= link_to "Add Group", "/groups/new", class: "btn btn-lg btn-primary btn-admin" %>
       <%= link_to "Edit Group", "/groups/edit", class: "btn btn-lg btn-primary btn-admin" %>
     </div>
@@ -69,9 +71,16 @@
   <% if current_user.admin? %>
     <h3>Student Controls</h3>
     <div class="center">
-      <%= link_to "Add Student", "/class_sessions/new", class: "btn btn-lg btn-primary btn-admin" %> 
+      <%= link_to "Add Student to Class", "/user_class_x_ref/new", class: "btn btn-lg btn-primary btn-admin" %> 
+      <%= link_to "Add Student to Group", "/user_group_x_ref/new", class: "btn btn-lg btn-primary btn-admin" %> 
     </div>
   <% end%>
 
-  
 </div>
+
+<%# <script>
+  document.getElementById("randomize_groups").onclick = function(){
+    @class_session.randomize_groups();
+    window.location.reload();
+  };
+</script> %>

@@ -14,10 +14,9 @@ class GroupsController < ApplicationController
 
   def create
      @group = Group.new(group_params)
-     @group.class_session_id = @class_session.id
      if @group.save
        flash[:success] = "Successfully created your group!"
-       redirect_to "/"
+       redirect_to "/class_sessions/" + @class_session.id
      else
        render 'new'
      end
@@ -31,7 +30,7 @@ class GroupsController < ApplicationController
      @group = Group.find(params[:id])
      if @group.update(group_params)
       flash[:success] = "Group updated"
-      redirect_to @group
+      redirect_to "/class_sessions/" + @class_session.id
      else
        render 'edit'
      end

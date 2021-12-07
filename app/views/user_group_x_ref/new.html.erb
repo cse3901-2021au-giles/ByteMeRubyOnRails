@@ -1,0 +1,10 @@
+<% provide(:title, 'Add Student') %>
+<h1>Add Student to Class</h1>
+
+  <p><%= link_to "Back to Profile", current_user %></p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <%= render 'user-group-form', :button_text => "Add Student" %>
+  </div>
+</div>
