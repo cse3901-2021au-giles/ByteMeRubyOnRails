@@ -1,19 +1,20 @@
-<h1><%= @class_session.name %></h1> %>
+<% provide(:title, @class_session.name) %>
+<h1><%= @class_session.name %></h1>
 
 <div class="class display">
   <h2>Professor</h2>
   <% user_class_x_refs = UserClassXRef.where(class_session_id: @class_session.id) %>
-    <% user_class_x_refs.each do |user| %>
-    <% if user_class_x_refs.admin? %>\
+    <% user_class_x_refs.each do |xref| %>
+    <%user = User.find(xref.class_session_id)%>
+    <% if user.admin? %>
       <h3>
       <%= user.first_name + " " + user.last_name %>
       </h3>
     <% end %>
   <% end %>
-  <%# Struggling to get the professor name here %>
 
   <h2>Groups</h2>
-  <% groups = Group.where(class_session_id: @claSss_session.id) %>
+  <% groups = Group.where(class_session_id: @class_session.id) %>
   <% groups.each do |group| %>
     <button type="button" class="collapsible"><%= group.name =%></button>
     <div class="content">
@@ -27,9 +28,10 @@
   <% end %>
 
   <h2>Students</h2>
-  <% users = UserClassXRef.where(class_session_id: @class_session.id) %>
-  <% users.each do |user| %>
-    <% if user.student? %>
+  <% xrefs = UserClassXRef.where(class_session_id: @class_session.id) %>
+  <% xrefs.each do |xref| %>
+    <%user = User.find(xref.class_session_id)%>
+    <% if !user.admin? %>
       <%= link_to user.first_name + " " + user.last_name, user %>
     <% end %>
     <% if current_user.admin? && !current_user?(user) %>
@@ -37,13 +39,10 @@
     <% end %>
   <% end %>
 
-<<<<<<< HEAD
   <% if current_user.admin? %>
     <%= link_to "Add Student", "/class_sessions/new", class: "btn btn-lg btn-primary" %> <%# make this page%>
     <%= link_to "Add Group", "/groups/new", class: "btn btn-lg btn-primary" %>
     <%= link_to "Add Project", "/projects/new", class: "btn btn-lg btn-primary" %>
   <% end%>
   
-=======
->>>>>>> 01d6d3bf692b5dd541a995a1fd5564ec62becafe
 </div>

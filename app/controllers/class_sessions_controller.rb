@@ -1,11 +1,11 @@
 class ClassSessionsController < ApplicationController
 
   def index
-    @classes = ClassSession.all
+    @class_sessions = ClassSession.paginate(page: params[:page])
   end
   
   def show
-    @class_session = ClassSession.new
+    @class_session = ClassSession.find(params[:id])
   end
 
   def new
