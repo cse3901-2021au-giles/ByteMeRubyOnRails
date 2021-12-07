@@ -1,0 +1,38 @@
+<% provide(:title, @group.name) %>
+<h1><%= @group.name %></h1>
+
+
+<h2>Students</h2>
+<% xrefs = UserGroupXRef.where(group_id: @group.id) %>
+<% xrefs.each do |xref| %>
+  <%user = User.find(xref.user_id)%>
+  <% if !user.admin? %>
+    <%= link_to user.first_name + " " + user.last_name, user %>
+  <% end %>
+  <% if current_user.admin? && !current_user?(user) %>
+      <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+  <% end %>
+  <% end %>
+
+
+<h2>Projects</h2>
+  <% projects = Project.where(group_id: @group.id) %>
+  <% projects.each do |project| %>
+    <button type="button" class="collapsible"><%= group.name =%></button>
+    <div class="content">
+      <% members = UserGroupXRef.where(group_id: group.id) %>
+      <ul>
+        <% members.each do |member| %>
+          <li> <%= member.name =%> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if @user.admin? %>
+    <h3>Project Controls</h3>
+    <div class = "center">
+      <%= link_to "Add Project", {:controller => "projects", :action => "new", :class_session_id => @class_session.id }, class: "btn btn-lg btn-primary btn-admin" %> 
+
+      <%= link_to "Edit Project", "/projects/edit", class: "btn btn-lg btn-primary btn-admin" %> 
+    </div>
+  <% end %>
