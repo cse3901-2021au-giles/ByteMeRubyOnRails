@@ -1,0 +1,15 @@
+<div class="form">
+<%= form_with(model: @user_class_x_ref, local: true) do |f| %>
+  <%# <%= render 'error_messages', object: @class_session %> 
+    <%# need error handling%>
+
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, class: 'form-control' %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name, class: 'form-control' %>
+
+
+  <%= f.submit button_text, class: "btn btn-primary" %>
+<% end %>
+</div>

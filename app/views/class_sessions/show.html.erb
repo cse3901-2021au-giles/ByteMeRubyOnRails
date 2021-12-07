@@ -2,14 +2,13 @@
 <h1><%= @class_session.name %></h1>
 
 <div class="class display">
-  <h2>Professor</h2>
+  <h2>Professor 
   <% user_class_x_refs = UserClassXRef.where(class_session_id: @class_session.id) %>
     <% user_class_x_refs.each do |xref| %>
-    <%user = User.find(xref.class_session_id)%>
+    <%user = User.find(xref.user_id)%>
     <% if user.admin? %>
-      <h3>
       <%= user.first_name + " " + user.last_name %>
-      </h3>
+      </h2>
     <% end %>
   <% end %>
 
@@ -30,7 +29,7 @@
   <h2>Students</h2>
   <% xrefs = UserClassXRef.where(class_session_id: @class_session.id) %>
   <% xrefs.each do |xref| %>
-    <%user = User.find(xref.class_session_id)%>
+    <%user = User.find(xref.user_id)%>
     <% if !user.admin? %>
       <%= link_to user.first_name + " " + user.last_name, user %>
     <% end %>
@@ -40,9 +39,29 @@
   <% end %>
 
   <% if current_user.admin? %>
-    <%= link_to "Add Student", "/class_sessions/new", class: "btn btn-lg btn-primary" %> <%# make this page%>
-    <%= link_to "Add Group", "/groups/new", class: "btn btn-lg btn-primary" %>
-    <%= link_to "Add Project", "/projects/new", class: "btn btn-lg btn-primary" %>
+    <div class="row">
+      <h2>Add Student</h2>
+      <div class="col-md-6 col-md-offset-3">
+      <%= render 'user-class-form', :button_text => "Add Student" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <h2>Add Group</h2>
+      <div class="col-md-6 col-md-offset-3">
+      <%= render 'groups/group-form', :button_text => "Add Student" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <h2>Add Project</h2>
+      <div class="col-md-6 col-md-offset-3">
+      <%= render 'projects/project-form', :button_text => "Add Student" %>
+      </div>
+    </div>
+    <%# <%= link_to "Add Student", "/class_sessions/new", class: "btn btn-lg btn-primary" %> <%# make this page%> %>
+    <%# <%= link_to "Add Group", "/groups/new", class: "btn btn-lg btn-primary" %>
+    <%# <%= link_to "Add Project", "/projects/new", class: "btn btn-lg btn-primary" %> %> %>
   <% end%>
   
 </div>
