@@ -52,7 +52,7 @@ h1 {
 }
 
 h2 {
-//   font-size: 1.4em;
+   //font-size: 1.4em;
    letter-spacing: -1px;
    margin-bottom: 30px;
    text-align: center;
@@ -159,11 +159,10 @@ footer {
   center{
     text-align: center;
   }
-
-  .btn-primary:hover, .btn-primary:active{
-    background-color: #555555 !important;
-    outline-color: #555555 !important;
-  }
+}
+.btn-primary:hover, .btn-primary:active{
+  background-color: #555555 !important;
+  outline-color: #555555 !important;
 }
 
 .btn-student{
@@ -322,5 +321,9 @@ footer {
   //   display: table-cell; 
     vertical-align: middle;
     color: white;
+   }
+   h2{
+     font-weight: normal;
+    font-size: 1.4em;
    }
 }

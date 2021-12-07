@@ -21,11 +21,7 @@
   <%= f.select "user_type", options_for_select([ "Student", "Professor" ], f.object.user_type)%>
 
 
-  <% if current_user.student?%>
-    <%= f.submit button_text, class: "btn btn-primary btn-student" %>
-  <% end %>
-  <% if current_user.admin?%>
-    <%= f.submit button_text, class: "btn btn-primary btn-student" %>
-  <% end %>
+  <%= f.submit button_text, class: "btn btn-primary" %>
+
 <% end %>
 </div>
