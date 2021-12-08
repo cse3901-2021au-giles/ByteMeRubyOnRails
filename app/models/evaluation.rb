@@ -6,7 +6,7 @@ class Evaluation < ApplicationRecord
   validates :evaluator_id, presence: true, numericality: {greater_than:0}
   validates :evaluatee_id, presence: true, numericality: {greater_than:0}
   validates :score, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 100}
-  #validate :assessment, allow_blank: false
+  validates :assessment, presence: true
   validates :group_id, presence: true, numericality: {greater_than:0}
   validates :project_id, presence: true, numericality: {greater_than:0}
 
