@@ -4,7 +4,9 @@ class User < ApplicationRecord
     has_many :evaluation
     before_create :setColors
     attr_accessor :remember_token
-    before_save { self.email = email.downcase }
+    before_save { self.email = email.downcase 
+                  self.first_name = first_name.capitalize
+                  self.last_name = last_name.capitalize}
     validates :first_name, presence: true, length: {maximum:50}
     validates :last_name, presence: true, length: {maximum:50}
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
