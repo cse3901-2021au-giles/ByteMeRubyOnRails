@@ -52,7 +52,7 @@ h1 {
 }
 
 h2 {
-//   font-size: 1.4em;
+   //font-size: 1.4em;
    letter-spacing: -1px;
    margin-bottom: 30px;
    text-align: center;
@@ -153,18 +153,21 @@ footer {
 
 /* buttons */
 .btn-primary {
-  background-color: #656565;
-  outline-color: #656565 ;
   font-family: 'Open Sans', sans-serif;
   center{
     text-align: center;
   }
+}
 
-  .btn-primary:hover, .btn-primary:active{
-    background-color: #555555;
-    outline-color: #555555;
+.btn-nologin {
+  background-color: #656565 !important;
+  outline-color: #656565 !important;
+  &:hover, &:active{
+    background-color: #555555 !important;
+    outline-color: #555555 !important;
   }
 }
+
 
 .btn-student{
   background-color: $studentColor!important;
@@ -322,5 +325,9 @@ footer {
   //   display: table-cell; 
     vertical-align: middle;
     color: white;
+   }
+   h2{
+     font-weight: normal;
+    font-size: 1.4em;
    }
 }
