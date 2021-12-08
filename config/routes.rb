@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   resources :users
   resources :evaluations
   resources :class_sessions
-  resources :projects
+  resources :projects do
+    collection do
+      post 'generate_evaluations'
+    end
+  end
   resources :groups
 end

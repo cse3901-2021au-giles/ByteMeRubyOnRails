@@ -1,7 +1,8 @@
 class Project < ApplicationRecord
   belongs_to :class_session, foreign_key: "class_session_id"
+  belongs_to :group, foreign_key: "group_id"
   has_many :evaluations
-
+  validates :group_id, presence: true
   def get_evaluations
     return Evaluation.where(project_id: self.id)
   end
@@ -25,7 +26,9 @@ class Project < ApplicationRecord
     return get_evaluations.count
   end
 
-
+  def students
+    return Group.find(group_id).students
+  end
 
   
   validates :name, presence: {message: 'Name needed'}

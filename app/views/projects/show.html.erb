@@ -1,45 +1,31 @@
 <h1>Evaluation for Project <%= @project.name %></h1>
 <br/>
 <h2> Submitted </h2>
-<table>
-  <tr>
-    <th>Evaluator</th>
-    <th>Evaluatee</th>
-    <th>Score</th>
-    <th>Assessment</th>
-  </tr>
   <% count = 0 %>
   <% Evaluation.all.each do |evaluation| %>
-    <% if evaluation.project_id = @project.id %>
+    <% if evaluation.project_id = @project.id and !evaluation.submitted%>
       <% count = count + 1 %>
-      <tr>
-        <% evaluator = User.find_by id: evaluation.evaluator.id %>
-        <th> <%= evaluator.firstName =%> <%= evaluator.lastName =%> </th>
-        <% evaluatee = User.find_by id: evaluation.evaluatee.id %>
-        <th> <%= evaluatee.firstName =%> <%= evaluatee.lastName =%> </th>
-        <th><% @evaluation.score %></th>
-        <th><% @evaluation.assessment %></th>
-      </tr> 
+      
     <% end %>
   <% end %>
-</table>
 <br/>
-<p>There are <%= count %> evaluations submitted.</p>
+<p>There are <%= count %> evaluations pending of <%= Evaluation.where(project_id: @project.id).count %> total.</p>
 <br/>
-<h2> Students haven't submitted </h2>
-<ul>
-<% flag = 0 %>
-<% User.all.each do |user| %>
-  <% if user.user_type == "student" %>
-    <% Evaluation.all.each do |evaluation| %>
-      <% if user.id == evaluation.evaluator.id %>
-        <% flag = 1 %> 
-      <% end %>   
-    <% end %>
-    <% if flag == 0 %>
-      <li> <%= user.first_name %> <%= user.last_name %> </li>
-    <% end %>
-  <% end %>
+<% if count > 0 %>
+  <h2> Students with pending evaluations: </h2>
+  <ul>
+  <% students = Group.find( @project.group_id).students %>
+  <% students.each do |student| %>
+    <%if  student.pending_evals_for_group(Group.find(@project.group_id)).count > 0 %>
+      <%= render student %>
+    <%end%>
+  <%end%>
+  <% if current_user.admin? %>
+    <h3>Evaluation Controls</h3>
+    <div class = "center">
+      <%= link_to "Generate Evaluations", {:controller => "evaluations", :action => "new", :project => @project }, class: "btn btn-lg btn-primary btn-admin" %>
+    </div>
+  <% end%>
 <% end %>
 </ul>
 

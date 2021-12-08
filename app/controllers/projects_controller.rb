@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+   
   end
 
   def create
@@ -43,6 +44,13 @@ class ProjectsController < ApplicationController
     flash[:success] = "Project deleted"
    end
 
+   def generate_evaluations()
+
+   end
+
+   def students
+    Group.find(group_id).students
+   end
    private
    def project_params
      params.require(:project).permit(:name)
