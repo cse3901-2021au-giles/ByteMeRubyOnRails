@@ -57,7 +57,7 @@ class ProjectsController < ApplicationController
                                     :access_opens=>access_opens,
                                     :access_opens=>access_closes)
         evaluation.save
-        
+        redirect_to @project
       end
     end
    end
