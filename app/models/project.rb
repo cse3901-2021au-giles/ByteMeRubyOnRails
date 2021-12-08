@@ -30,14 +30,10 @@ class Project < ApplicationRecord
     return get_evaluations.count
   end
 
-<<<<<<< HEAD
-=======
   def students
     return Group.find(group_id).students
   end
 
   
-  validates :name, presence: {message: 'Name needed'}
->>>>>>> 3a8b2bef52fedf75eaa99e302aab8ffb7bd1dc2c
 end
 
