@@ -23,8 +23,10 @@ $ yarn install --check-files
 ```
 $ bundle install
 ```
-5. Seed the database using the following command:
+5. Set up and seed the database using the following commands:
 ```
+$ rails db:create
+$ rails db:migrate
 $ rails db:seed
 ```
 6. Use the following command to run the server and utilize the tool:
