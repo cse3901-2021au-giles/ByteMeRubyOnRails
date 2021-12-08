@@ -8,23 +8,32 @@
     <%user = User.find(xref.user_id)%>
     <% if user.admin? %>
       <%= user.first_name + " " + user.last_name %>
+      </h2>
     <% end %>
   <% end %>
-  </h2>
 
+  
 
- 
-
-
-
-  <h2>Students</h2>
-  <% xrefs = UserClassXRef.where(class_session_id: @class_session.id) %>
-  <% xrefs.each do |xref| %>
-    <%user = User.find(xref.user_id)%>
-    <% if !user.admin? %>
-      <%= render user%>
-    <% end %>
+  <h2>Groups</h2>
+  <% groups = Group.where(class_session_id: @class_session.id) %>
+  <% groups.each do |group| %>
+    <button type="button" class="collapsible"><%= group.name =%><%= link_to "page", group, class: "btn btn-lg btn-primary btn-admin btn-in-btn" %></button>
+    <div class="content">
+      <% members = group.students %>
+      <ul>
+        <% members.each do |member| %>
+          <li> <%= member.first_name =%> </li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
+  <% if current_user.admin? %>
+    <h3>Group Controls</h3>
+    <div class = "center">
+      <%= link_to "Add Group", "/groups/new", class: "btn btn-lg btn-primary btn-admin" %>
+      <%= link_to "Edit Group", "/groups/edit", class: "btn btn-lg btn-primary btn-admin" %>
+    </div>
+    <%end%>
   <% if current_user.admin? %>
     <h3>Student Controls</h3>
     <div class="center">
