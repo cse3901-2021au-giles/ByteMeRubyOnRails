@@ -5,8 +5,8 @@ one:
   evaluatee_id: 762146111 #check ids of fixtures by adding 'byebug' to a test and then typing [ModelName].all in debug
   score: 1
   assessment: MyText
-  project_id: 298486374,
-  group_id: 298486374,
+  project_id: 980190962
+  group_id: 298486374
 
 two:
   evaluator_id: 1 
