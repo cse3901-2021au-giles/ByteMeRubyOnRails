@@ -50,8 +50,9 @@ class ClassSessionsController < ApplicationController
 
    def add_user_to_class
     xref = UserClassXRef.new()
-    xref.class_session_id = user_class_params.class_session_id
-    users = User.where(:first_name => user_class_params.first_name, :last_name => user_class_params.last_name)
+    xref.class_session_id = params[:Class_session][:class_session_id]
+    users = User.where(:first_name => params[:Class_session][:first_name], :last_name => params[:Class_session][:last_name])
+    byebug
     user_id = users.first.id
     xref.user_id = user_id
     if xref.save
@@ -64,10 +65,10 @@ class ClassSessionsController < ApplicationController
 
    def add_user_to_group
     xref = UserGroupXRef.new()
-    groups = User.where(:name => user_group_params.group_name)
+    groups = Group.where(:name => params[:Class_session][:name])
     group_id = groups.first.id
-    xref.group_id = user_class_params.group_id
-    users = User.where(:first_name => user_class_params.first_name, :last_name => user_class_params.last_name)
+    xref.group_id = user_class_params[group_id]
+    users = User.where(:first_name => user_class_params[:Class_session][:first_name], :last_name => user_class_params[:Class_session][:last_name])
     user_id = users.first.id
     xref.user_id = user_id
     if xref.save
@@ -84,11 +85,11 @@ class ClassSessionsController < ApplicationController
    end
 
    def user_class_params
-    params.require(:user_class_x_ref).permit(:first_name, :last_name, :class_session_id)
+    params.permit(:first_name, :last_name, :class_session_id)
    end
 
   def user_group_params
-    params.require(:user_group_x_ref).permit(:first_name, :last_name, :group_name)
+    params.permit(:first_name, :last_name, :group_name)
   end
   
 end

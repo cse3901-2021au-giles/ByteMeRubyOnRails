@@ -1,7 +1,6 @@
 <div class="form">
 <%= form_with(model: @group, local: true) do |f| %>
   <%# <%= render 'error_messages', object: @class_session %> 
-  <%# need error handling%>
 
   <%= f.label :name %>
     <p>Remember: this name should be unique to this group</p>
@@ -25,6 +24,7 @@
   <%= f.text_field :group_type, class: 'form-control' %>
 
 
+  <%= f.hidden_field :class_session_id, value: params[:class_session_id] %>
   <%= f.submit button_text, class: "btn btn-primary btn-admin" %>
 <% end %>
 </div>

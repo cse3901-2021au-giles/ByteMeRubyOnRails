@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  get 'class_sessions/add_user_to_class'
+  get 'class_sessions/user_class'
+  get 'class_sessions/user_group'
   resources :users 
   resources :evaluations
   resources :class_sessions do
