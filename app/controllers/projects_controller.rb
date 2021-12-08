@@ -44,14 +44,24 @@ class ProjectsController < ApplicationController
     flash[:success] = "Project deleted"
    end
 
-   def generate_evaluations()
-    
-    byebug
+   def generate_evaluations
+    @project = Project.find(params[:Project][:eval_project].to_i)
+    access_opens = params[:Project][:evaluation_window_opens]
+    access_closes = params[:Project][:evaluation_window_closes]
+    @project.students.each do |student_evaluator|
+      @project.students.each do |student_evaluatee|
+        evaluation = Evaluation.new(:evaluator_id=>student_evaluator.id, 
+                                    :evaluatee_id=>student_evaluatee.id, 
+                                    :group_id=>@project.group_id,
+                                    :project_id=>@project.id,
+                                    :access_opens=>access_opens,
+                                    :access_opens=>access_closes)
+        evaluation.save
+        
+      end
+    end
    end
 
-   def students
-    Group.find(group_id).students
-   end
    private
    def project_params
      params.require(:project).permit(:name)
