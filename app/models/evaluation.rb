@@ -9,4 +9,5 @@ class Evaluation < ApplicationRecord
   validates :assessment, presence: true, allow_blank: false
   validates :group_id, presence: true, numericality: {greater_than:0}
   validates :project_id, presence: true, numericality: {greater_than:0}
+  validates :submitted, presence: true
 end

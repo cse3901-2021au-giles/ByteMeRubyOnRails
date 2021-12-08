@@ -4,6 +4,8 @@ class ClassSession < ApplicationRecord
   has_many :users, :through => :user_class_x_refs
   has_many :projects
 
+  validates :name, presence: {message: 'Class name needed'}
+  
   def get_groups
     return Group.where(class_session_id: self.id)
   end

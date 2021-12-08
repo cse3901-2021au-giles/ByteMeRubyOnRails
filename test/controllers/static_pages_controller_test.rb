@@ -15,4 +15,9 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get contact_path
     assert_response :success
   end
+  
+  test "should get instruction" do
+    get instruction_path
+    assert_response :success
+  end
 end
