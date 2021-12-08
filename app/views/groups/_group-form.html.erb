@@ -7,19 +7,6 @@
   <%= f.text_field :name, class: 'form-control' %>
 
   <%= f.label :group_type %>
-  <% if Group.all.size > 0%>
-    <p>Your existing group types are: </p>
-  <% end%>
-  
-
-  <ul>
-
-  <% for i in Group.distinct.pluck(:group_type) do%>
-    <li>
-      <%= @groups[i].group_type %>
-    </li>
-  <% end%>
-  </ul>
 
   <%= f.text_field :group_type, class: 'form-control' %>
 
