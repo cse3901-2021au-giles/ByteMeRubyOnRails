@@ -21,6 +21,8 @@ end
 # Create a main sample class session.
 ClassSession.create!(name: "Example Class 1")
 UserClassXRef.create(user_id: 1, class_session_id: 1)
+UserClassXRef.create(user_id: 2, class_session_id: 21)
+UserClassXRef.create(user_id: 3, class_session_id: 1)
 ClassSession.create!(name: "Example Class 1")
 UserClassXRef.create(user_id: 2, class_session_id: 1)
 ClassSession.create!(name: "Example Class 2")
@@ -30,7 +32,9 @@ Group.create!(name: "Example Group 1",
               class_session_id: 1)
 Group.create!(name: "Example Group 2",
                             class_session_id: 2)
+UserGroupXRef.create(user_id:1, group_id:1)
 UserGroupXRef.create(user_id:2, group_id:1)
+UserGroupXRef.create(user_id:3, group_id:1)
 # Create a main sample project.
 Project.create!(name: "Example Project 1",
               class_session_id: 1, group_id:1)
