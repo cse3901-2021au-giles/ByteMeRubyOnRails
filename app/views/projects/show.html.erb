@@ -23,7 +23,7 @@
   <% if current_user.admin? %>
     <h3>Evaluation Controls</h3>
     <div class = "center">
-      <%= link_to "Generate Evaluations", {:controller => "evaluations", :action => "new", :project => @project }, class: "btn btn-lg btn-primary btn-admin" %>
+      <%= link_to "Generate Evaluations", {:controller => "evaluations", :action => "new", :project => @project.id }, class: "btn btn-lg btn-primary btn-admin" %>
     </div>
   <% end%>
 <% end %>

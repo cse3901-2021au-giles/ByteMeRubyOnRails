@@ -47,7 +47,16 @@
       <%= link_to "Add Group", {:controller => "groups", :action => "new", :class_session_id => @class_session.id }, class: "btn btn-lg btn-primary btn-admin" %>
       <%= link_to "Edit Group", "/groups/edit", class: "btn btn-lg btn-primary btn-admin" %>
     </div>
-    <%end%>
+  <% end%>
+
+  <h2>Students</h2>
+  <% xrefs = UserClassXRef.where(class_session_id: @class_session.id) %>
+  <% xrefs.each do |xref| %>
+    <%user = User.find(xref.user_id)%>
+    <% if !user.admin? %>
+      <%= render user%>
+    <% end %>
+  <% end %>
   <% if current_user.admin? %>
     <h3>Student Controls</h3>
     <div class="center">
@@ -58,3 +67,5 @@
 
   
 </div>
+
+<%= render 'shared/collapsible_script' %> 

@@ -6,10 +6,10 @@
       <%= form_for("Project", url: generate_evaluations_projects_url) do |f| %> 
         
         <%= f.label "Evaluation window opens" %>
-        <%= f.datetime_select  :evaluation_window_opens %>
-    
+        <%= f.datetime_select  :evaluation_window_starts %>
+        
         <%= f.label "Evaluation window closes" %>
-        <%= f.datetime_select  :evaluation_window_opens %>
+        <%= f.datetime_select  :evaluation_window_ends_ %>
         
         <%= f.hidden_field :eval_project, value: params[:project] %>
         <%= f.submit "Submit" %>

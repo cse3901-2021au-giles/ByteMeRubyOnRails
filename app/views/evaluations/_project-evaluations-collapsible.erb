@@ -1,7 +1,12 @@
 <button type="button" class="collapsible">
 	<%completeStyle = "incomplete"%>
 	<% if project.complete? then completeStyle = "complete" end%>
-	<%= project.name + "\t"=%> <%if project.number_evaluations > 0 %> <span class="<%=completeStyle=%>"><%=project.number_complete_evaluations.to_s =%></span><%= "/" + project.number_evaluations.to_s =%> <%end%>
+	<%= project.name + "\t"=%> 
+	<%if project.number_evaluations > 0 %> 
+	<span class="<%=completeStyle=%>"><%=project.number_complete_evaluations.to_s =%></span>
+	<%= "/" + project.number_evaluations.to_s =%> 
+	<%end%>
+	<%= link_to "page", project, class: "btn btn-lg btn-primary btn-admin btn-in-btn" %> 
 
 	</button>
 <div class="content">
@@ -15,7 +20,9 @@
   </tr>
 	  	<ul class="projectEvaluations">
 			<% project.get_evaluations.each do |evaluation| %> 
+				<tr>
 				<%= render "evaluations/display-evaluation", :evaluation => evaluation =%>
+				</tr>
 			<% end %>
 		</ul>
 		</table>
