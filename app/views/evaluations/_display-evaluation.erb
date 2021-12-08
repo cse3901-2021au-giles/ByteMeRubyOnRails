@@ -14,14 +14,19 @@
 
 <td>
 
-<% if evaluation.submitted %>
-  <%= link_to 'Show', evaluation %>
-<% else%>
-  <%if @user.id == evaluation.evaluator_id%>
-     <%= link_to 'Complete', edit_evaluation_path(evaluation), :class => "incomplete" %>
-  <%else%>
-    <%= "pending..." =%>
+  <% if evaluation.submitted %>
+    <%= link_to 'Show', evaluation %>
+  <% else %>
+    <% if evaluation.in_time_window? %>
+        <%if @user.id == evaluation.evaluator_id%>
+          <%= link_to 'Complete', edit_evaluation_path(evaluation), :class => "incomplete" %>
+        <%else%>
+          <%= "pending..." =%>
+        <%end%>
+     <%else%>
+      <%= "Window has not opened" =%>
+     <%end%>
+
   <%end%>
-<%end%>
 
 </td>
