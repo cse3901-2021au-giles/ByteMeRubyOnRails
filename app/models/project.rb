@@ -2,14 +2,11 @@ class Project < ApplicationRecord
   belongs_to :class_session, foreign_key: "class_session_id"
   belongs_to :group, foreign_key: "group_id"
   has_many :evaluations
-<<<<<<< HEAD
 
   validates :name, presence: {message: 'Name needed'}
   validates :class_session_id, numericality: {greater_than:0}
   
-=======
   validates :group_id, presence: true
->>>>>>> 3a8b2bef52fedf75eaa99e302aab8ffb7bd1dc2c
   def get_evaluations
     return Evaluation.where(project_id: self.id)
   end
