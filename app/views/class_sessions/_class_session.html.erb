@@ -1,0 +1,14 @@
+<br>
+<li>
+<div >
+      <h3> <%= link_to class_session.name, class_session %> </h3>
+           
+      <% if current_user.admin?%>
+        <p>
+         <%= link_to "delete", class_session, method: :delete,
+                                            data: { confirm: "You sure?" } %>
+
+         </p>
+      <% end %>
+  </div>
+</li>

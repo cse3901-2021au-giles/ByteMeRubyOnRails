@@ -1,11 +1,12 @@
 class ClassSessionsController < ApplicationController
-
+  before_action :logged_in_user, only: [:index, :edit, :update, :show, :destroy]
   def index
     @class_sessions = ClassSession.paginate(page: params[:page])
   end
   
   def show
     @class_session = ClassSession.find(params[:id])
+    @user = current_user
   end
 
   def new
@@ -45,7 +46,7 @@ class ClassSessionsController < ApplicationController
     flash[:success] = "User deleted"
     redirect_to users_url
    end
-
+   
    private
    def class_session_params
      params.require(:class_session).permit(:name)
