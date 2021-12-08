@@ -18,7 +18,7 @@ class Evaluation < ApplicationRecord
   def in_time_window?
 
     if access_closes and access_opens then
-      byebug
+      
       return Time.zone.now.between?(access_opens, access_closes)
     end
     return true

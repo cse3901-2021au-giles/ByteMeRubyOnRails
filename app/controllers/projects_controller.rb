@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
 
     access_opens = Time.zone.parse(params[:Project]['evaluation_window_starts(1i)'] + '-' + params[:Project]['evaluation_window_starts(2i)'] + '-' + params[:Project]['evaluation_window_starts(3i)'] + '-' + params[:Project]['evaluation_window_starts(4i)'] + '-' + params[:Project]['evaluation_window_starts(5i)'] )
     access_closes = Time.zone.parse(params[:Project]['evaluation_window_ends_(1i)'] + '-' + params[:Project]['evaluation_window_ends_(2i)'] + '-' + params[:Project]['evaluation_window_ends_(3i)'] + '-' + params[:Project]['evaluation_window_ends_(4i)'] + '-' + params[:Project]['evaluation_window_ends_(5i)'] )
-
+    
     
     if access_opens < access_closes then
       @project.students.each do |student_evaluator|

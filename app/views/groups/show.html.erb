@@ -18,7 +18,10 @@
 <h2>Projects</h2>
   <% projects = Project.where(group_id: @group.id) %>
   <% projects.each do |project| %>
-    <button type="button" class="collapsible"><%= @group.name =%></button>
+    <button type="button" class="collapsible">
+      <%= @group.name =%>
+      <%= link_to "page", project, class: "btn btn-lg btn-primary btn-admin btn-in-btn" %> 
+    </button>
     <div class="content">
       <% members = project.students %>
       <ul>
