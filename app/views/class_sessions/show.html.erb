@@ -28,8 +28,8 @@
   <% if current_user.admin? %>
     <h3>Student Controls</h3>
     <div class="center">
-      <%= link_to "Add Student to Class", {:action => "add_user_to_class", :class_session_id => @class_session.id }, class: "btn btn-lg btn-primary btn-admin" %> 
-      <%= link_to "Add Student to Group", {:action => "add_user_to_group"}, class: "btn btn-lg btn-primary btn-admin" %> 
+      <%= link_to "Add Student to Class", {:action => "user_class", :class_session_id => @class_session.id }, class: "btn btn-lg btn-primary btn-admin" %> 
+      <%= link_to "Add Student to Group", {:action => "user_group"}, class: "btn btn-lg btn-primary btn-admin" %> 
     </div>
   <% end%>
 

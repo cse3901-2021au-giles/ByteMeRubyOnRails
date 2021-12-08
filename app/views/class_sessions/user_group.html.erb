@@ -1,8 +1,8 @@
-<h1> Add Student to Class </h1>
+<h1> Add Student to Group </h1>
 
   <div class="row">
     <div class="col-md-6 col-md-offset-3 form">
-      <%= form_with url: "/class_session/add_user_to_class", method: :get do |form| %> 
+      <%= form_for("Class_session", url: add_user_to_group_class_sessions_url) do |f| %> 
         
         <%= f.label :first_name %>
         <%= f.text_field  :first_name, class: 'form-control' %>
@@ -10,7 +10,8 @@
         <%= f.label :last_name %>
         <%= f.text_field :last_name, class: 'form-control' %> 
         
-        <%= f.hidden_field :class_session_id, value: params[:class_session_id] %>
+        <%= f.label :group_name %>
+        <%= f.text_field :group_name, class: 'form-control' %> 
         <%= f.submit "Add Student", class: "btn btn-primary btn-admin"  %>
       <% end %>
     </div>
