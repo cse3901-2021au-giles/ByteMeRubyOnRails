@@ -41,13 +41,9 @@ $ rails server
 ```
 $ cd test
 ```
-3. Ensure that you have yarn jest installed. If you don't, run the following command:
+3. Run the following command to run all of the tests and see their pass/fail results:
 ```
-$ yarn add --dev jest
-```
-4. Run the following command to run all of the tests and see their pass/fail results:
-```
-$ yarn jest
+$ rails test
 ```
 
 ## Contributing
