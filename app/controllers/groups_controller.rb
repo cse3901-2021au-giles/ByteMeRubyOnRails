@@ -15,7 +15,6 @@ class GroupsController < ApplicationController
 
   def create
      @group = Group.new(group_params)
-     @group.class_session_id = @class_session.id
      if @group.save
        flash[:success] = "Successfully created your group!"
        redirect_to "/"
@@ -46,6 +45,6 @@ class GroupsController < ApplicationController
 
    private
    def group_params
-     params.require(:group).permit(:name, :group_type)
+     params.require(:group).permit(:name, :group_type, :class_session_id)
    end
 end

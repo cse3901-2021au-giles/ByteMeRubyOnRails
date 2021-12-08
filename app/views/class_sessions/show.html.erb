@@ -12,6 +12,26 @@
     <% end %>
   <% end %>
 
+    <h2>Projects</h2>
+  <% groups = Group.where(class_session_id: @class_session.id) %>
+  <% groups.each do |group| %>
+    <button type="button" class="collapsible"><%= group.name =%></button>
+    <div class="content">
+      <% members = UserGroupXRef.where(group_id: group.id) %>
+      <ul>
+        <% members.each do |member| %>
+          <li> <%= member.name =%> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if @user.admin? %>
+    <h3>Project Controls</h3>
+    <div class = "center">
+      <%= link_to "Add Project", {:controller => "projects", :action => "new", :class_session_id => @class_session.id }, class: "btn btn-lg btn-primary btn-admin" %> 
+      <%= link_to "Edit Project", "/projects/edit", class: "btn btn-lg btn-primary btn-admin" %> 
+    </div>
+  <% end%>
   
 
   <h2>Groups</h2>
