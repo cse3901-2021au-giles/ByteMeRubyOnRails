@@ -34,8 +34,7 @@ $ rails db:seed
 $ rails server
 ```
 7. Right click on one of the links after the text "Listening on" and click open link.
-8. Make sure to read the instructions before using the tool so you know how to use it properly.
-9. Sign up and use the Peer Evaluation Tool!
+8. Sign up and use the Peer Evaluation Tool!
 
 ## Test Run Instructions
 1. Change the directory to where you downloaded the project file.
@@ -47,6 +46,8 @@ $ cd test
 ```
 $ rails test
 ```
+## Notes
+We have not been able to get the "new project" button to work properly from the admin/prof's perspective.
 
 ## Contributing
 
