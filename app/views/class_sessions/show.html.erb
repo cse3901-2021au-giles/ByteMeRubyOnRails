@@ -8,11 +8,10 @@
     <%user = User.find(xref.user_id)%>
     <% if user.admin? %>
       <%= user.first_name + " " + user.last_name %>
-      </h2>
     <% end %>
   <% end %>
+  </h2>
 
-  
 
   <h2>Groups</h2>
   <% groups = Group.where(class_session_id: @class_session.id) %>
@@ -35,6 +34,28 @@
     </div>
   <% end%>
 
+
+  <h2>Projects</h2>
+  <% groups = Group.where(class_session_id: @class_session.id) %>
+  <% groups.each do |group| %>
+    <button type="button" class="collapsible"><%= group.name =%></button>
+    <div class="content">
+      <% members = UserGroupXRef.where(group_id: group.id) %>
+      <ul>
+        <% members.each do |member| %>
+          <li> <%= member.name =%> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if @user.admin? %>
+    <h3>Project Controls</h3>
+    <div class = "center">
+      <%= link_to "Add Project", {:controller => "projects", :action => "new", :class_session_id => @class_session.id }, class: "btn btn-lg btn-primary btn-admin" %> 
+      <%= link_to "Edit Project", "/projects/edit", class: "btn btn-lg btn-primary btn-admin" %> 
+    </div>
+  <% end%>
+
   <h2>Students</h2>
   <% xrefs = UserClassXRef.where(class_session_id: @class_session.id) %>
   <% xrefs.each do |xref| %>
@@ -49,7 +70,8 @@
   <% if current_user.admin? %>
     <h3>Student Controls</h3>
     <div class="center">
-      <%= link_to "Add Student", "/class_sessions/new", class: "btn btn-lg btn-primary btn-admin" %> 
+      <%= link_to "Add Student to Class", {:action => "add_user_to_class", :class_session_id => @class_session.id }, class: "btn btn-lg btn-primary btn-admin" %> 
+      <%= link_to "Add Student to Group", {:action => "add_user_to_group"}, class: "btn btn-lg btn-primary btn-admin" %> 
     </div>
   <% end%>
 

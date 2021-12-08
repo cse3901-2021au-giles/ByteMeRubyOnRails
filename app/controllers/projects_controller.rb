@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
   end
-  
+   
   # Show the evaluation status of one project
   def show
     @project = Project.find(params[:id])
@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @project = Project.new(project_params)
      @project = Project.new(project_params)
      if @project.save
        flash[:success] = "Successfully created your project!"

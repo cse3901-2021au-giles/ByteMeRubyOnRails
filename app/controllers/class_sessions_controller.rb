@@ -46,11 +46,50 @@ class ClassSessionsController < ApplicationController
     flash[:success] = "User deleted"
     redirect_to users_url
    end
+
+
+   def add_user_to_class
+    xref = UserClassXRef.new()
+    xref.class_session_id = user_class_params.class_session_id
+    users = User.where(:first_name => user_class_params.first_name, :last_name => user_class_params.last_name)
+    user_id = users.first.id
+    xref.user_id = user_id
+    if xref.save
+      flash[:success] = "Student added to class"
+      redirect_to "/"
+     else
+      flash[:warning] = "Student not successfully added. There may not be a student with that name. Check the users page to be sure."
+     end
+   end
+
+   def add_user_to_group
+    xref = UserGroupXRef.new()
+    groups = User.where(:name => user_group_params.group_name)
+    group_id = groups.first.id
+    xref.group_id = user_class_params.group_id
+    users = User.where(:first_name => user_class_params.first_name, :last_name => user_class_params.last_name)
+    user_id = users.first.id
+    xref.user_id = user_id
+    if xref.save
+      flash[:success] = "Student added to group"
+      redirect_to "/"
+     else
+      flash[:warning] = "Student not successfully added. There may not be a student or group with that name."
+     end
+   end
    
    private
    def class_session_params
      params.require(:class_session).permit(:name)
    end
+
+   def user_class_params
+    params.require(:user_class_x_ref).permit(:first_name, :last_name, :class_session_id)
+   end
+
+  def user_group_params
+    params.require(:user_group_x_ref).permit(:first_name, :last_name, :group_name)
+  end
   
 end
 
