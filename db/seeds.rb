@@ -21,8 +21,6 @@ end
 # Create a main sample class session.
 ClassSession.create!(name: "Example Class 1")
 UserClassXRef.create(user_id: 1, class_session_id: 1)
-ClassSession.create!(name: "Example Class 1")
-UserClassXRef.create(user_id: 2, class_session_id: 1)
 ClassSession.create!(name: "Example Class 2")
 UserClassXRef.create(user_id: 1, class_session_id: 2)
 # Create a main sample group.
