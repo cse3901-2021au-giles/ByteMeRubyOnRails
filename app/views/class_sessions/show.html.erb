@@ -19,10 +19,10 @@
   <% groups.each do |group| %>
     <button type="button" class="collapsible"><%= group.name =%></button>
     <div class="content">
-      <% members = UserGroupXRef.where(group_id: group.id) %>
+      <% members = group.students %>
       <ul>
         <% members.each do |member| %>
-          <li> <%= member.name =%> </li>
+          <li> <%= member.first_name =%> </li>
         <% end %>
       </ul>
     </div>
@@ -55,3 +55,5 @@
 
   
 </div>
+
+<%= render 'shared/collapsible_script' %> 
