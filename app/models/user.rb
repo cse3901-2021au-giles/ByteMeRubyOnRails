@@ -60,6 +60,10 @@ class User < ApplicationRecord
       end
       return classes
     end
+
+    def pending_evals_for_group(group)
+      evals = Evaluation.where(evaluator_id: id).where(group_id: group.id).where(submitted:false)
+    end
     COLOR_OPTIONS = ["#ff7566", "#f7a197", "#faad5a", "#f0800a", "#e1e66c", "#94d415", "#d3ff7a", "#4f8c2e", "#57e674", "#74e8bc",
   "#05f599", "#5fe8d8", "#3e8c83", "#3e768c", "#3ebbed", "#00638a", "#001e8a", "#6b88f2", "#8f6bf2", "#4f2ab5", "#4a08ff",
   "#a408ff", "#c084e3", "#f57fe7", "#ab0598", "#ab0552", "#db3747"]

@@ -2,35 +2,43 @@
 <h1><%= @class_session.name %></h1>
 
 <div class="class display">
-  <h2>Professor</h2>
+  <h2>Professor 
   <% user_class_x_refs = UserClassXRef.where(class_session_id: @class_session.id) %>
     <% user_class_x_refs.each do |xref| %>
-    <%user = User.find(xref.class_session_id)%>
+    <%user = User.find(xref.user_id)%>
     <% if user.admin? %>
-      <h3>
       <%= user.first_name + " " + user.last_name %>
-      </h3>
+      </h2>
     <% end %>
   <% end %>
+
+  
 
   <h2>Groups</h2>
   <% groups = Group.where(class_session_id: @class_session.id) %>
   <% groups.each do |group| %>
     <button type="button" class="collapsible"><%= group.name =%></button>
     <div class="content">
-      <% members = UserGroupXRef.where(group_id: group.id) %>
+      <% members = group.students %>
       <ul>
         <% members.each do |member| %>
-          <li> <%= member.name =%> </li>
+          <li> <%= member.first_name =%> </li>
         <% end %>
       </ul>
     </div>
   <% end %>
+  <% if current_user.admin? %>
+    <h3>Group Controls</h3>
+    <div class = "center">
+      <%= link_to "Add Group", "/groups/new", class: "btn btn-lg btn-primary btn-admin" %>
+      <%= link_to "Edit Group", "/groups/edit", class: "btn btn-lg btn-primary btn-admin" %>
+    </div>
+  <% end%>
 
   <h2>Students</h2>
   <% xrefs = UserClassXRef.where(class_session_id: @class_session.id) %>
   <% xrefs.each do |xref| %>
-    <%user = User.find(xref.class_session_id)%>
+    <%user = User.find(xref.user_id)%>
     <% if !user.admin? %>
       <%= link_to user.first_name + " " + user.last_name, user %>
     <% end %>
@@ -38,11 +46,14 @@
         <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
     <% end %>
   <% end %>
-
   <% if current_user.admin? %>
-    <%= link_to "Add Student", "/class_sessions/new", class: "btn btn-lg btn-primary" %> <%# make this page%>
-    <%= link_to "Add Group", "/groups/new", class: "btn btn-lg btn-primary" %>
-    <%= link_to "Add Project", "/projects/new", class: "btn btn-lg btn-primary" %>
+    <h3>Student Controls</h3>
+    <div class="center">
+      <%= link_to "Add Student", "/class_sessions/new", class: "btn btn-lg btn-primary btn-admin" %> 
+    </div>
   <% end%>
+
   
 </div>
+
+<%= render 'shared/collapsible_script' %> 
