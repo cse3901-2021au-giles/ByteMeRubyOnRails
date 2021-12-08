@@ -5,6 +5,8 @@ class Group < ApplicationRecord
   belongs_to :class_session
 
   validates :name, presence: {message: 'Group name needed'}
+  validates :class_session_id, numericality: {greater_than:0}
+  validates :group_type, numericality: {greater_than:0}
   
   def get_projects
     return Project.where(class_session_id: self.id)

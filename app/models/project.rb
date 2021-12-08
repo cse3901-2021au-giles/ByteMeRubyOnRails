@@ -2,6 +2,9 @@ class Project < ApplicationRecord
   belongs_to :class_session, foreign_key: "class_session_id"
   has_many :evaluations
 
+  validates :name, presence: {message: 'Name needed'}
+  validates :class_session_id, numericality: {greater_than:0}
+  
   def get_evaluations
     return Evaluation.where(project_id: self.id)
   end
@@ -25,9 +28,5 @@ class Project < ApplicationRecord
     return get_evaluations.count
   end
 
-
-
-  
-  validates :name, presence: {message: 'Name needed'}
 end
 
