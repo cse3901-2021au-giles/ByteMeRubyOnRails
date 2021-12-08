@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_30_200428) do
+ActiveRecord::Schema.define(version: 2021_12_07_021822) do
 
   create_table "class_sessions", force: :cascade do |t|
     t.string "name"
@@ -27,7 +27,9 @@ ActiveRecord::Schema.define(version: 2021_11_30_200428) do
     t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "submitted"
+    t.boolean "submitted", default: false
+    t.datetime "access_opens"
+    t.datetime "access_closes"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -41,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_11_30_200428) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.integer "class_session_id"
+    t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

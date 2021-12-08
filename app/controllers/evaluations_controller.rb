@@ -55,15 +55,6 @@ class EvaluationsController < ApplicationController
   def evaluation_params
     params.require(:evaluation).permit(:evaluator_id, :evaluatee_id, :submitted)
   end
- 
-  # Confirms a logged-in user.
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-  end
 
 
   def evaluation_params

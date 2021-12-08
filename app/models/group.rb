@@ -34,4 +34,18 @@ class Group < ApplicationRecord
   def has_evaluations?
     return get_projects.any?{|project| project.get_evaluations.count > 0}
   end
+
+  def students
+    xrefs = UserGroupXRef.where(group_id: id)
+    students = Array.new
+    xrefs.each do |xref|
+      xref_students= User.where(id: xref.user_id).to_a
+      xref_students.each do |xref_student|
+          if(xref_student.student?) then
+            students.push(xref_student)
+          end
+      end
+    end
+    students
+  end
 end

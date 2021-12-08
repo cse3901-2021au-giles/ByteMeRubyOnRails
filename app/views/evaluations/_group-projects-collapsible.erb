@@ -1,7 +1,13 @@
 <button type="button" class="collapsible">
 <%completeStyle = "incomplete"%>
 	<% if group.projects_complete? then completeStyle = "complete" end%>
-	<%= group.name + "\t"=%>  <%if group.has_evaluations? %><span class="<%=completeStyle=%>"><%=group.number_complete_projects.to_s =%></span><%= "/" + group.number_projects.to_s =%><% end %>
+	<%= group.name + "\t"=%>  
+	<%if group.has_evaluations? %>
+	<span class="<%=completeStyle=%>">
+	<%=group.number_complete_projects.to_s =%></span><%= "/" + group.number_projects.to_s =%>
+	<% end %>
+	<%= link_to "page", group, class: "btn btn-lg btn-primary btn-admin" %> 
+
 </button>
 	<div class="content">
 	  	<ul class="groupProjects">
