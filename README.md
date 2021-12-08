@@ -23,8 +23,10 @@ $ yarn install --check-files
 ```
 $ bundle install
 ```
-5. Seed the database using the following command:
+5. Set up and seed the database using the following commands:
 ```
+$ rails db:create
+$ rails db:migrate
 $ rails db:seed
 ```
 6. Use the following command to run the server and utilize the tool:
@@ -41,13 +43,9 @@ $ rails server
 ```
 $ cd test
 ```
-3. Ensure that you have yarn jest installed. If you don't, run the following command:
+3. Run the following command to run all of the tests and see their pass/fail results:
 ```
-$ yarn add --dev jest
-```
-4. Run the following command to run all of the tests and see their pass/fail results:
-```
-$ yarn jest
+$ rails test
 ```
 
 ## Contributing
@@ -60,28 +58,3 @@ Pull requests are NOT welcome, but comments are!
 - Aastha Gupta
 - Hannah Nguyen
 - Jiaqi Xu
-
-This README would normally document whatever steps are necessary to get the application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-* Images
- The image in the jumbotron background (on the home page) was found at https://global-uploads.webflow.com/5d64efaf6ed3eef3fca10861/5dbfe26c5102da1b585c3461_annie-spratt-QckxruozjRg-unsplash.jpg
